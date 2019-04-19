@@ -1,0 +1,39 @@
+@media screen and (min-width:550px) {
+    /* .mt-login {
+        margin: 25px;
+        min-height: 300px;
+        border: 2px solid lightgrey;
+        padding: 10px;
+        box-sizing: border-box;
+        width: 70%;
+        margin: 0 auto;
+        border-radius: 10px;
+    } */
+    .mt-login-form {
+        width: 400px;
+        margin: 0 auto;
+        padding: 25px;
+        border: 2px solid lightgrey;
+    }
+    lable{
+        font-size: 18px;
+    }
+   
+    .mt-form-control {
+        width: 50%;
+        padding: 8px;
+        margin: 5px;
+        border: solid 1px lightskyblue;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-style: italic;
+    }
+    /* .mt-login-form div:nth-child(3) {
+        
+        width: 50%;
+        margin: 0 auto;
+        padding: 10px;
+        margin: 10px;
+    } */
+    
+   
+}

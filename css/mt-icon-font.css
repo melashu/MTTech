@@ -1,0 +1,28 @@
+  .fa-sign-in-alt {
+      color: white;
+  }
+
+  .fa-save {
+      padding: 10px;
+      color: white;
+  }
+
+  .fa-bars {
+      padding: 15px;
+      font-size: 2em;
+      background-color: rgb(8, 119, 184);
+      color: white;
+      position: absolute;
+      top: 0;
+      right: 0;
+  }
+
+  .fa-bars:hover {
+      background-color: #333;
+      opacity: 0.7;
+  }
+
+  .fa-caret-down{
+      float: right;
+      color: white;
+  }

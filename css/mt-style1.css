@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 2px;
+}
+
+.mt-ads {
+    display: none;
+}
+
+.mt-nav {
+    width: 100%;
+    background-color: #333;
+    opacity: 0.7;
+    padding: 10px;
+    display: none;
+}
+
+.mt-nav li {
+    display: inline-block;
+    width: 150px;
+    padding: 3px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mt-nav li:hover {
+    border-bottom: 2px solid white;
+    /* color: #333; */
+}
+
+.mt-title {
+    text-align: center;
+    background-color: rgb(8, 119, 184);
+    position: relative;
+    top: 0px;
+    padding: 10px;
+    margin: 5px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 18px;
+    opacity: 1;
+    z-index: -2;
+}
+
+lable {
+    display: inline-block;
+    width: 30%;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.mt-form-control {
+    width: 45%;
+    padding: 8px;
+    margin: 5px;
+    border: solid 1px lightskyblue;
+    font-style: italic;
+}
+
+.mt-btn {
+    background-color: red;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    width: 50%;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    margin: 10px;
+    opacity: 0.7;
+}
+
+.mt-btn:hover {
+    background: green;
+    text-decoration: underline;
+}
+
+.mt-link {
+    font-size: 14px;
+    font-style: italic;
+    color: white;
+    background-color: gray;
+    padding: 4px;
+    width: 40%;
+    display: inline-block;
+    text-align: center;
+}
+
+.mt-link:hover {
+    text-decoration: underline;
+}
+
+#mt-reg-mess, #mt-up-mess {
+    text-align: center;
+    font-size: 18px;
+    font-style: italic;
+    display: inline-block;
+    padding: 10px;
+    background-color: rgb(182, 248, 226);
+    width: 95%;
+    margin-top: 5px;
+}
+
+#mt-upload-mess {
+    text-align: center;
+    font-size: 18px;
+    font-style: italic;
+    display: none;
+    padding: 10px;
+    background-color: rgb(182, 248, 226);
+    width: 95%;
+    margin-top: 5px;
+}
+
+#mt-reg-link {
+    display: none;
+    color: red;
+}
+
+.mt-reg-form span {
+    color: red;
+}
+
+.mt-footer {
+    width: 100%;
+    background-image: url('../image/bg.png');
+    background-size: cover;
+    background-repeat: no-repeate;
+    background-position: 0px -150px;
+    min-height: 180px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.mt-sign-link {
+    color: blue;
+}
+
+.mt-reg-footer {
+    text-align: center;
+    background-color: rgb(133, 130, 130);
+    min-height: 50px;
+    color: white;
+}
+
+/***for admin.php***/
+
+.mt-admin-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-column-gap: 5px;
+    margin: -5px;
+}
+
+.mt-admin-aside {
+    padding: 25px;
+    background-color: #333;
+    width: 200px;
+}
+
+.mt-admin-main {
+    /* width: 100%;
+    margin: 0 auto; */
+    padding: 5px;
+}
+
+.mt-admin-aside a, .mt-dropdown {
+    display: block;
+    color: white;
+    background-color: #444;
+    border: 1px solid #777;
+    padding: 5px 5px 5px 5px;
+    margin: 5px;
+    width: 200px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.mt-side-menu {
+    display: none;
+}
+
+.mt-admin-aside .fas, .mt-admin-aside .far {
+    padding-right: 5px;
+}
+
+.mt-dropdown {
+    font-weight: 700;
+}
+
+.mt-post-editor {
+    width: 98%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#mt-photo {
+    padding: 5px;
+}
+
+#mt-btn-add-cat, #mt-btn-apply, .mt-view-btn {
+    background: rgb(8, 119, 184);
+    padding: 5px;
+    display: inline-block;
+    width: 70px;
+    text-align: center;
+    /* border-radius: 20px; */
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.mt-table-container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    border: none;
+}
+
+th {
+    width: 80px;
+    padding: 5px;
+    text-align: center;
+}
+
+#first {
+    background-color: #555;
+    color: white;
+}
+
+td {
+    text-align: center;
+}
+
+.catlink {
+    color: white;
+    background-color: rgb(8, 119, 184);
+    width: 95%;
+    margin: 0;
+    display: inline-block;
+    border: 1px solid lightblue;
+}
+
+tr:nth-child(even) {
+    background: rgb(247, 243, 243);
+}
+
+span {
+    color: red;
+}
+
+.mt-table-post {
+    width: 100%;
+    padding: 3px;
+}
+
+.mt-table-post th {
+    padding: 2px;
+    min-height: 20px;
+}
+
+.mt-table-post td {
+    padding: 5px;
+}
+
+#mt-display {
+    border: 1px solid rgb(151, 217, 243);
+    padding: 30px;
+}
+
+#mt-display a {
+    color: blue;
+    opacity: 0.8;
+}
+
+.mt-last-view {
+    margin: 15px;
+    float: left;
+    width: 22%;
+    font-weight: 800;
+    font-style: italic;
+}
+
+#mt-view-content {
+    margin-top: 50px;
+}
+
+.mt-blog-title {
+    text-align: center;
+    margin-top: 100px;
+    font-style: italic;
+}
+
+.mt-view-video {
+    width: 70vw;
+    padding: 10px;
+}
+
+#mt-search {
+    /* background-image: url('../image/search.png');
+    background-position: 10px 0px;
+    background-repeat: no-repeat; */
+    /* padding: 12px 20px 12px 40px; */
+    padding: 10px;
+    /* background-repeat: no-repeat; */
+    /* background-size: 50px; */
+}
+
+.mt-web-btn {
+    display: inline-block;
+    padding: 10px 5px;
+    margin: 5px;
+    width: 280px;
+    text-transform: capitalize;
+}
+
+.mt-web-reg {
+    margin: 30px auto;
+    width: 50%;
+    /* border: 1px solid #777; */
+}
+
+.container {
+    margin: 0 150px;
+    padding: 10px;
+}
+
+@media all and (min-width:550px) {
+    /**for daynamic menu*/
+    .mt-course-menu, .mt-video-menu {
+        display: none;
+        position: absolute;
+        background-color: rgb(12, 9, 9);
+        min-width: 15%;
+        padding: 10px;
+        text-align: left;
+        z-index: 100;
+    }
+    .mt-course-menu a, .mt-video-menu a {
+        display: block;
+        padding: 5px;
+        margin: 5px;
+    }
+    .mt-course-menu a:hover, .mt-video-menu a:hover {
+        border-bottom: 2px solid white;
+        background-color: rgb(12, 10, 10);
+    }
+    #mt-course-menu:hover .mt-course-menu, #mt-video-menu:hover .mt-video-menu {
+        display: block;
+        color: red;
+        /* width: 100%; */
+    }
+    #menu {
+        display: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    /* a:hover {
+        color: #333;
+    } */
+    .mt-header {
+        height: 20vw;
+        background-image: url('../image/bg3.jpg');
+        background-size: cover;
+        background-blend-mode: hard-light;
+        background-position: 0px -80px;
+        /* backface-visibility:  */
+    }
+    .mt-logo {
+        padding: 5px;
+        /***
+        grid-column:1/5;
+        */
+        flex: 1;
+    }
+    .mt-ads {
+        background: yellow;
+        padding: 10px;
+        flex: 3;
+        width: 650px;
+        display: block;
+    }
+    .mt-nav {
+        background-color: #333;
+        padding: 5px;
+        position: sticky;
+        margin: 0px 0px;
+        display: block;
+    }
+    .mt-nav li {
+        width: 110px;
+    }
+    .mt-nav ul {
+        display: flex;
+        flex: 0 0 10px;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .mt-nav li a {
+        color: white;
+        font-weight: bold;
+    }
+    /* .mt-nav li a:hover {
+        color: #333;
+    } */
+    lable {
+        font-size: 16px;
+    }
+    .mt-main-container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-column-gap: 5px;
+    }
+    /*for login.php page*/
+    .mt-main {
+        width: 70%;
+        margin: 0 auto;
+    }
+    /**for register.php*/
+    .mt-reg {
+        width: 600px;
+        margin: 0 auto;
+        border: 2px solid lightgrey;
+    }
+    .mt-reg-form {
+        width: 600px;
+        padding: 25px;
+        overflow: auto;
+    }
+    /*for web admin side*/
+    .mt-cat {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-column-gap: 2px;
+    }
+    .mt-btn-container {
+        display: flex;
+        flex: 0 1 50px;
+        align-items: center;
+        justify-content: center;
+    }
+    .mt-add-post .mt-form-control {
+        padding: 10px;
+    }
+}
+
+/* @media screen and (min-width:550px) and (max-width:700px) {} */
