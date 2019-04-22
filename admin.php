@@ -24,13 +24,7 @@ require_once "adminsidemenu.php";
 require_once "mt-blogpost.php";
 ?>
         <main class="mt-admin-main">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi eius quo excepturi officia quasi, iusto at
-            laborum libero fugit accusantium repellendus enim in similique odio voluptate voluptas perferendis provident
-            esse, optio corporis. Voluptatum nesciunt quod deserunt vel magni dicta, repudiandae praesentium tempora
-            reprehenderit aperiam molestiae facilis, nisi impedit consequatur, ipsum quo dolorum! Doloremque animi dicta
-            corrupti ullam, cupiditate quas, praesentium illo ratione, nihil ab esse. Ex soluta officiis quibusdam, quia
-            facere commodi vitae doloribus provident error beatae voluptate iure harum consequuntur facilis aperiam odio
-            minima in cum molestiae enim culpa dolore, distinctio saepe! Et cumque qui in itaque ducimus iusto.
+            <h1>On development....</h1>
         </main>
     </div>
     <footer class="mt-footer">
