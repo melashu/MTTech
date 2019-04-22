@@ -68,7 +68,6 @@ foreach ($result as $row) {
                             <option value="approve">Approve</option>
                             <option value="draft" selected>Draft</option>
                             <option value="close">Close</option>
-
                         </select>
                         <span>*</span>
                     </div>
@@ -76,6 +75,7 @@ foreach ($result as $row) {
                         <lable for="mt-photo"> Cover Photo</lable>
                         <input type="file" name="photo" accept="image/*" id="mt-photo" class="mt-form-control">
                         <span class="option">(Optional)</span>
+                        <img src="" class="form-control" alt="Sorry, there is no image" id="preview">
                     </div>
                     <div class="mt-post-editor">
                         <lable for="mt-content">Content</lable>
@@ -135,6 +135,13 @@ if(isset($_GET['pid']) and !empty($_GET['pid'])){
                     CKEDITOR.instances['mt-content'].setData(row['content']);
                     $('#mt-cat').val(row['categorie']);
                     $('#mt-status').val(row['poststatus']);
+                    $('img#preview').attr('src', row['coverpage']);
+                    $('img#preview').show();
+                    /***
+                     * I don't know it is not working for some pid 
+                     */
+                    // alert(row['poststatus']);
+
                 }
             }).fail(function(responseTxt, statusTxt, xhr) {
                 alert(statusTxt);

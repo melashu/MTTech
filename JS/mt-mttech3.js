@@ -2,18 +2,31 @@ $('document').ready(function () {
     /***
      * This event is used for deleting the blog post 
      */
+
     $('#mt-for-del').one('change', function (e) {
+        // console.log($('button.mt-edit-btn'));
+        // console.log(document.getElementsByClassName('button.mt-edit-btn'))
         $('button.mt-del-btn').click(function () {
-            var id = $(this).parent().parent().find('input').val();
-            var data = [];
-            data.push(id);
-            ajaxToBlogPost(JSON.stringify(data), 'delete');
+            var conform = confirm("Do you want to delete this blog");
+            if (conform) {
+                var id = $(this).parent().parent().find('input').val();
+                var data = [];
+                data.push(id);
+                ajaxToBlogPost(JSON.stringify(data), 'delete');
+            }
         });
 
         $('button.mt-edit-btn').click(function () {
             var id = $(this).parent().parent().find('input').val();
             location = "blogpost.php?pid=" + id;
         });
+        $('button.mt-view').click(function () {
+            var id = $(this).parent().parent().find('input').val();
+            var display = document.getElementById('mt-display');
+            display.scrollIntoView();
+
+        });
+
     });
 
     var getBlogList = () => {
@@ -77,7 +90,7 @@ $('document').ready(function () {
                 alert('You successfuly update the selected blog post');
                 setTimeout(() => {
                     location = 'viewpost.php';
-                }, 100)
+                }, 100);
             } else {
                 alert('There may be error please try again ');
             }

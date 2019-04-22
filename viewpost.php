@@ -52,6 +52,8 @@ $videoPost = new VideoPost();
                 <br>
                 <input type="search" name="" id="mt-search" placeholder="Search you want" class="mt-form-control">
                 <input type="checkbox" name="" id="mt-for-del" value="1">
+                <label for="mt-for-del">Click here to
+                    edit,delete and view</label>
 
             </div>
             <table border="1" class="mt-table-post" id="mt-blog-table">
@@ -100,40 +102,36 @@ $videoPost = new VideoPost();
             <br>
             <hr>
             <div id="mt-display">
-                <?php
-if (isset($_GET['page']) and !empty($_GET['page'])) {
-    $row = $blogPost->getBlogPost($_GET['page']);
-    if ($row != null) {
-        ?>
+
                 <script>
                 function show() {
-                    var display = document.getElementById(' mt-display');
-                    display.scrollIntoView();
+
                 }
                 show();
                 </script>
                 <p class="mt-last-view">Author:
-                    <?php echo " " . $row['username']; ?></p>
-                <p class="mt-last-view">
-                    Post Date: <?php echo " " . $row['postdate']; ?>
                 </p>
                 <p class="mt-last-view">
-                    Last Update: <?php echo " " . $row['lastupdate']; ?>
+                    Post Date:
                 </p>
                 <p class="mt-last-view">
-                    Categorie <?php echo " " . $row['categorie']; ?> Blog
+                    Last Update:
+                </p>
+                <p class="mt-last-view">
+                    Categorie
                 </p>
 
                 <h2 class="mt-blog-title">
-                    Title:- <?php echo " " . $row['title']; ?>
+                    Title:-
                 </h2>
                 <br>
                 <div id="mt-view-content">
-                    <?php echo $row['content']; ?>
+
                 </div>
+
+
                 <?php
-}
-}
+
 
 if (isset($_GET['pid']) and !empty($_GET['pid'])) {
     $row = $videoPost->getVideoPost($_GET['pid']);

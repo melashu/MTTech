@@ -59,7 +59,7 @@ class BlogPost extends dbConnection {
     }
     public function updateSingleBlog($title, $cat, $photo, $content, $status, $pid) {
         $result;
-        $sql = "UPDATE blogpost set poststatus=:post,title=:title,categorie=:cat,coverpage=:photo,content:=content WHERE pid=:pid";
+        $sql = "UPDATE blogpost set poststatus=:post,title=:title,categorie=:cat,coverpage=:photo,content=:content WHERE pid=:pid";
         $stat = $this->con->prepare($sql);
         $stat->bindValue(':post', $status);
         $stat->bindValue(':title', $title);

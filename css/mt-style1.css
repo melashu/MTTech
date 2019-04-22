@@ -136,13 +136,14 @@ lable {
 
 .mt-footer {
     width: 100%;
-    background-image: url('../image/bg.png');
+    background-color: #333;
     background-size: cover;
     background-repeat: no-repeate;
     background-position: 0px -150px;
     min-height: 180px;
     margin-top: 10px;
     padding: 20px;
+    color: white;
 }
 
 .mt-sign-link {
@@ -343,6 +344,18 @@ span {
     padding: 10px;
 }
 
+img#preview {
+    width: 230px;
+    height: 150px;
+    background: #555;
+    display: inline-block;
+    display: none;
+    /* float: left;
+    */
+    border: #777 3px dashed;
+    margin-left: 300px;
+}
+
 @media all and (min-width:550px) {
     /**for daynamic menu*/
     .mt-course-menu, .mt-video-menu {
@@ -405,6 +418,7 @@ span {
         position: sticky;
         margin: 0px 0px;
         display: block;
+        top: 0;
     }
     .mt-nav li {
         width: 110px;
