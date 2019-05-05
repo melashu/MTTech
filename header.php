@@ -6,13 +6,14 @@ $blogPost = new BlogPost;
 $videoPost = new VideoPost;
 ?>
  <nav class="mt-nav" id="mt-nav">
-     <ul>
-         <li>
-             <a href="register.php" title="Register Here">Sign Up Here</a>
-         </li>
+     <ul class="admin-item">
+
          <li>
              <a href="login.php" title="Login Here">Sign in</a>
              <i class="fas fa-sign-in-alt"></i>
+         </li>
+         <li>
+             <a href=" register.php" title="Register Here">Sign Up Here</a>
          </li>
          <ul>
  </nav>
@@ -21,17 +22,17 @@ $videoPost = new VideoPost;
  </header>
 
  <nav class="mt-nav" id="mt-nav">
-     <ul>
+     <ul class="item">
          <li id="mt-course-menu">
-             <a href="admin.php" title="Avaliable Courses">All Courses</a>
-             <div class="mt-course-menu">
+             <a href="course.php" title="Avaliable Courses">All Courses</a>
+             <ul class="mt-course-menu">
                  <?php
 $result = $blogPost->getBlogCat();
 foreach ($result as $row) {
-    echo "<a href=course.php?courseCategorie=" . $row['categorie'] . ">" . $row['categorie'] . " Tutorial</a>";
+    echo "<li><a href=course.php?courseCategorie=" . $row['categorie'] . ">" . $row['categorie'] . " Tutorial</a></li>";
 }
 ?>
-             </div>
+             </ul>
          </li>
          <li id="mt-video-menu">
              <a href="video.php" title="Video Material">Video Tutorial</a>

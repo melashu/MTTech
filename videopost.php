@@ -65,8 +65,10 @@ foreach ($result as $row) {
                     <div>
                         <lable for="mt-status">Post Status: </lable>
                         <select name="status" id="mt-status" required class="mt-form-control">
-                            <option value="approve">Approve</option>
-                            <option value="draft" selected>Draft</option>
+                            <option value="publish">Published</option>
+                            <option selected value="draft">Draft </option>
+                            <option value="close">Closed</option>
+                            <option value="delete">Deleted</option>
                         </select>
                         <span>*</span>
                     </div>
@@ -85,17 +87,22 @@ foreach ($result as $row) {
                         <span>*</span>
                     </div>
                     <div>
-                        <lable for="mt-photo"> Cover Photo</lable>
+                        <lable for="mt-photo">Cover Photo</lable>
                         <input type="file" required name="photo" accept="image/*" id="mt-photo" class="mt-form-control">
                         <span class="option">*</span>
+                        <br>
+                        <img src="" class="form-control" alt="Sorry, there is no image" id="preview">
+
                     </div>
                     <div>
                         <lable for="mt-video"> Upload Video</lable>
-                        <input type="file" required name="video" accept="video/*" id="mt-video" class="mt-form-control">
+                        <input type="file" multiple required name="video" accept="video/*" id="mt-video"
+                            class="mt-form-control">
                         <span class="option">*</span>
+                        <video controls id="mt-video-preview"></video>
                     </div>
                     <div class="mt-post-editor">
-                        <lable for="mt-content">Video Desciption</lable>
+                        <lable for="mt-content">Video Description</lable>
                         <textarea name="content" id="mt-content" required rows="10" cols="80">
             </textarea>
                         <!-- <script>
@@ -118,7 +125,7 @@ foreach ($result as $row) {
             </div>
             <hr>
         </main>
-
+        <script src="js/jQuery.js"></script>
         <script src="js/mt-mttech1.js"></script>
         <script src="js/mt-mttech2.js"></script>
         <script src="js/mt-mttech3.js"></script>

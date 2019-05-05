@@ -57,13 +57,27 @@ class BlogPost extends dbConnection {
             // return $row;
         }
     }
+    // public function getPublishedBlogPost($pid, $status) {
+    //     $sql = "select * from blogpost where pid=:pid and poststatus=:status";
+    //     $stat = $this->con->prepare($sql);
+    //     $stat->bindValue('pid', $pid);
+    //     $stat->bindValue('status', $status);
+    //     $chk = $stat->execute();
+    //     if ($chk) {
+            
+    //         $row = $stat->fetch(PDO::FETCH_ASSOC);
+    //         echo json_encode($row);
+    //     } else {
+    //         echo 'noEdit';
+    //     }
+    // }
     public function updateSingleBlog($title, $cat, $photo, $content, $status, $pid) {
         $result;
         $sql = "UPDATE blogpost set poststatus=:post,title=:title,categorie=:cat,coverpage=:photo,content=:content WHERE pid=:pid";
         $stat = $this->con->prepare($sql);
         $stat->bindValue(':post', $status);
         $stat->bindValue(':title', $title);
-        $stat->bindValue(':cat', $cat);        
+        $stat->bindValue(':cat', $cat);
         $stat->bindValue(':photo', $photo);
         $stat->bindValue(':content', $content);
         $stat->bindValue(':pid', $pid);
@@ -76,8 +90,20 @@ class BlogPost extends dbConnection {
     }
     public function getBlogCat() {
         $sql = "SELECT DISTINCT categorie from blogpost";
+
         $result = $this->con->query($sql);
         return $result;
+    }
+    /**
+     * To get all post by there categorie
+     */
+    public function getBlogByCat($para) {
+        $sql = "SELECT title,pid from blogpost WHERE categorie=:cat";
+        $stat = $this->con->prepare($sql);
+        $stat->bindValue(':cat', $para);
+        $result = $stat->execute();
+        $row = $stat->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
     }
     public function insertData($title, $cat, $photo, $content, $username, $status) {
         try {
@@ -121,9 +147,13 @@ if (isset($_POST['role']) and ($_POST['role']) !== 'delete') {
 }
 /***To get blog post by id  */
 if (isset($_POST['data']) and $_POST['data'] === 'edit') {
+//   echo "meshu";
     $blogpost->getBlogPost($_POST['row']);
-
 }
+
+// if (isset($_GET['data']) and $_GET['data'] === 'display') {
+//     $blogpost->getPublishedBlogPost($_GET['row'], $_GET['status']);
+// }
 
 if (isset($_POST['viewBlog'])) {
     $blogpost->getBlogPost('no');

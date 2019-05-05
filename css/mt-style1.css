@@ -157,25 +157,23 @@ lable {
     color: white;
 }
 
-/***for admin.php***/
-
-.mt-admin-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-column-gap: 5px;
-    margin: -5px;
-}
-
 .mt-admin-aside {
     padding: 25px;
     background-color: #333;
-    width: 200px;
+    width: 100%;
 }
 
 .mt-admin-main {
     /* width: 100%;
     margin: 0 auto; */
     padding: 5px;
+}
+
+.mt-course-aside {
+    padding: 10px;
+    background-color: #ccc;
+    width: 100%;
+    margin-top: 4px;
 }
 
 .mt-admin-aside a, .mt-dropdown {
@@ -295,19 +293,23 @@ span {
 .mt-last-view {
     margin: 15px;
     float: left;
-    width: 22%;
+    width: 20%;
     font-weight: 800;
     font-style: italic;
 }
 
 #mt-view-content {
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .mt-blog-title {
     text-align: center;
-    margin-top: 100px;
     font-style: italic;
+    margin-top: 50px;
+}
+
+#mt-video-blog-title {
+    width: 50%;
 }
 
 .mt-view-video {
@@ -356,30 +358,103 @@ img#preview {
     margin-left: 300px;
 }
 
+video#mt-video-preview {
+    display: none;
+}
+
+/**for viewpost.php **/
+
+#mt-display {
+    display: none;
+}
+
+/**
+for course.php 
+*/
+
+.mt-accordion {
+    padding: 3px !important;
+}
+
+a.mt-page-link {
+    background-color: beige;
+    display: block;
+    padding: 2px;
+    margin: 3px;
+}
+
+.mt-course-main {
+    padding: 20px;
+}
+
+.mt-course-main h1 {
+    color: green;
+    text-transform: capitalize;
+    font-style: italic;
+}
+
+.mt-course-main p {
+    margin: 10px;
+}
+
+.mt-course-title {
+    text-align: center;
+    margin: 20px;
+    font-size: 2.3em;
+}
+
+.mt-coverimage {
+    display: none;
+    width: 90%;
+    height: 300px;
+    margin: 10px auto;
+}
+
+.mt-course-content {
+    margin: 20px;
+}
+
+.mt-blog-comment {
+    display: none;
+    margin: 20px 0px;
+}
+.mt-hr {
+    display: none;
+}
+
 @media all and (min-width:550px) {
     /**for daynamic menu*/
     .mt-course-menu, .mt-video-menu {
         display: none;
         position: absolute;
         background-color: rgb(12, 9, 9);
-        min-width: 15%;
         padding: 10px;
         text-align: left;
-        z-index: 100;
+        width: 200px;
+        margin-top: 5px;
     }
+    /* .mt-course-menu li {
+        width: 200px;
+    } */
     .mt-course-menu a, .mt-video-menu a {
         display: block;
         padding: 5px;
         margin: 5px;
+        width: 180px;
+        text-align: left;
     }
     .mt-course-menu a:hover, .mt-video-menu a:hover {
-        border-bottom: 2px solid white;
+        /* border-bottom: 2px solid white; */
         background-color: rgb(12, 10, 10);
+        border-bottom: 2px solid white;
     }
     #mt-course-menu:hover .mt-course-menu, #mt-video-menu:hover .mt-video-menu {
         display: block;
         color: red;
         /* width: 100%; */
+    }
+    .mt-course-menu li:hover {
+        border: none;
     }
     #menu {
         display: none;
@@ -420,22 +495,24 @@ img#preview {
         display: block;
         top: 0;
     }
-    .mt-nav li {
+    .mt-nav .item li {
         width: 110px;
+        /* float: left; */
     }
-    .mt-nav ul {
-        display: flex;
-        flex: 0 0 10px;
-        justify-content: flex-end;
-        align-items: center;
+    .mt-nav .item {
+        height: 30px;
     }
     .mt-nav li a {
         color: white;
         font-weight: bold;
     }
-    /* .mt-nav li a:hover {
-        color: #333;
-    } */
+    .admin-item {
+        height: 35px;
+    }
+    .admin-item li {
+        float: right;
+        width: 100px;
+    }
     lable {
         font-size: 16px;
     }
@@ -474,6 +551,19 @@ img#preview {
     }
     .mt-add-post .mt-form-control {
         padding: 10px;
+    }
+    /***for admin.php***/
+    .mt-admin-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-column-gap: 5px;
+        margin: -5px;
+    }
+    .mt-admin-aside {
+        width: 200px;
+    }
+    .mt-course-aside {
+        width: 300px;
     }
 }
 

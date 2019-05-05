@@ -122,7 +122,7 @@ if (addPost != null) {
                         message.style.display = "block";
 
                     }
-                } 
+                }
             }
             serverRequest.send(formData);
 
@@ -152,7 +152,7 @@ if (addPost != null) {
                         message.style.display = "block";
 
                     }
-                } 
+                }
             }
             serverRequest.send(formData);
 
@@ -286,6 +286,10 @@ if (viewPost !== null) {
  */
 
 var showBlogPost = () => {
+    //hide display area 
+//  $('#mt-display').html(" ");
+    // $('#mt-review-video').fadeOut();
+    
     if (blogTable.style.display === 'none') {
         blogTable.style.display = 'block';
     }
@@ -297,7 +301,6 @@ var showBlogPost = () => {
     serverRequest.open('POST', 'mt-blogpost.php', true);
     serverRequest.onreadystatechange = () => {
         if (serverRequest.readyState === 4 && serverRequest.status === 200) {
-
             if (tbodyBlog !== null) {
                 var result = JSON.parse(serverRequest.responseText);
                 result.forEach((row) => {
@@ -307,9 +310,9 @@ var showBlogPost = () => {
                         "<td>" + row['categorie'] + "</td>" +
                         "<td>" + row['postdate'] + "</td>" +
                         "<td>" + row['poststatus'] + "</td>" +
-                        "<td> <button class=mt-view-btn mt-view>View</button></td>" +
+                        "<td><button class='mt-view-btn mt-preview-btn'>View</button></td>" +
                         "<td><button class='mt-edit-btn mt-view-btn'>Edit</button></td>" +
-                        "<td> <button class='mt-view-btn mt-del-btn' id='delete'>Delete</button> </td>" +
+                        "<td><button class='mt-view-btn mt-del-btn' id='delete'>Delete</button> </td>" +
                         "<td>" + row['viewstatus'] + "</td>"
                         + "</tr>";
                     tbodyBlog.innerHTML = tbodyBlog.innerHTML + tbRow;
@@ -320,6 +323,8 @@ var showBlogPost = () => {
     serverRequest.send(formData);
 }
 var showVideoPost = () => {
+    // $('#mt-review-blog').fadeOut();
+
     if (videoTable.style.display === 'none') {
         videoTable.style.display = 'block';
     }
@@ -342,10 +347,10 @@ var showVideoPost = () => {
                         "<td>" + row['categorie'] + "</td>" +
                         "<td>" + row['postdate'] + "</td>" +
                         "<td>" + row['poststatus'] + "</td>" +
-                        "<td> <button class=mt-view-btn>View</button></td>" +
-                        "<td><button class=mt-view-btn>Edit</button></td>" +
-                        "<td><button class=mt-view-btn>Delete </button></td>" +
-                        "<td>" + row['prices'] + " </td>" +
+                        "<td><button class='mt-view-btn mt-video-view'>View</button></td>" +
+                        "<td><button class='mt-view-btn mt-edit-video' style='background-color:red'>Edit</button></td>" +
+                        "<td><button class='mt-view-btn mt-del-video'>Delete </button></td>" +
+                        "<td> " + row['viewstatus']+" </td>" + 
                         "<td>" + row['prices'] + " Birr</td>" +
                         "<td>" + row['viewstatus'] + "</td>"
                         + "</tr>";
@@ -358,3 +363,5 @@ var showVideoPost = () => {
     //showVideoPost();
 }
 showBlogPost();
+
+

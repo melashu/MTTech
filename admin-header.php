@@ -1,5 +1,5 @@
  <nav class="mt-nav" id="mt-admin-nav">
-     <ul>
+     <ul class="admin-item">
          <li>
              <a href="tips.php" title="How To Do ...">Tips</a>
          </li>

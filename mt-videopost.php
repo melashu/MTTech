@@ -53,16 +53,19 @@ class VideoPost extends dbConnection {
             $sql = "select * from videopost where vid=:vid";
             $stat = $this->con->prepare($sql);
             $stat->bindValue('vid', $para);
-            $stat->execute();
-            $row = $stat->fetch(PDO::FETCH_ASSOC);
-            return $row;
+            $chk = $stat->execute();
+            if ($chk >= 1) {
+                $row = $stat->fetch(PDO::FETCH_ASSOC);
+                echo json_encode($row);
+            }else{
+                echo "no view";
+            }
         }
     }
     public function insertVideo($title, $poststatus, $image, $videotype, $categorie, $username, $video, $prices, $desic) {
         try {
-
             //  $sql = "insert into " . TBL_VIDEOPOST . " (titlt,poststatus,coverpage,videotype,postdate,categorie,username,content,prices,desic) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10)";
-            $sql = "insert into " . TBL_VIDEOPOST . " (title,poststatus,coverpage,videotype,postdate,categorie,username,content,prices,desic) values (:1,:2,:3,:4,curdate(),:6,:7,:8,:9,:10)";
+            $sql = "insert into " . TBL_VIDEOPOST . " (title,poststatus,coverpage,videotype,postdate,categorie,username,content,prices,desic,viewstatus) values (:1,:2,:3,:4,curdate(),:6,:7,:8,:9,:10,:11)";
             $stat = $this->con->prepare($sql);
             $stat->bindValue(":1", $title);
             $stat->bindValue(":2", $poststatus);
@@ -74,6 +77,8 @@ class VideoPost extends dbConnection {
             $stat->bindValue(":8", $video);
             $stat->bindValue(":9", $prices);
             $stat->bindValue(":10", $desic);
+            $stat->bindValue(":11", '0');
+
             $res = $stat->execute();
             if (!$res) {
                 echo "fail";
@@ -98,6 +103,11 @@ if (isset($_POST['role']) and ($_POST['role'] === 'delete')) {
 if (isset($_POST['viewVideo'])) {
     $videoPost->getVideoPost('no');
 }
+
+if (isset($_POST['preview']) and ($_POST['preview'] === 'view')) {
+    $videoPost->getVideoPost($_POST['row']);
+}
+
 if (isset($_POST['upload'])) {
     $title = trim($_POST['title']);
     $cat = trim($_POST['cat']);

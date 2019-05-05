@@ -65,9 +65,10 @@ foreach ($result as $row) {
                     <div>
                         <lable for="mt-status">Post Status: </lable>
                         <select name="status" id="mt-status" required class="mt-form-control">
-                            <option value="approve">Approve</option>
-                            <option value="draft" selected>Draft</option>
-                            <option value="close">Close</option>
+                            <option value="publish">Published</option>
+                            <option selected value="draft">Draft </option>
+                            <option value="close">Closed</option>
+                            <option value="delete">Deleted</option>
                         </select>
                         <span>*</span>
                     </div>

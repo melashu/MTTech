@@ -42,10 +42,10 @@ $videoPost = new VideoPost();
                 <br>
                 <select class="mt-form-control" id="mt-view-update">
                     <option value="">..Select..</option>
-                    <option value="publish">Publish</option>
+                    <option value="published">Published</option>
                     <option value="draft">Draft </option>
-                    <option value="close">Close</option>
-                    <option value="delete">Delete</option>
+                    <option value="closed">Closed</option>
+                    <option value="deleted">Deleted</option>
                 </select>
                 <button id="mt-btn-apply">Apply</button>
                 <!-- <span id="mt-view-span" style="color:red,display:none,font-size:10px;">Select one please</span> -->
@@ -91,7 +91,7 @@ $videoPost = new VideoPost();
                         <th>Edit</th>
                         <th>Delete</th>
                         <th>Downloads</th>
-                        <th>Price</th>
+                        <th>Package Price</th>
                         <th>Views</th>
                     </tr>
                 </thead>
@@ -99,78 +99,58 @@ $videoPost = new VideoPost();
 
                 </tbody>
             </table>
+
+
             <br>
             <hr>
             <div id="mt-display">
 
-                <script>
-                function show() {
+                <div id="mt-review-blog">
+                    <p class=" mt-last-view" id="mt-author">
+                    </p>
+                    <p class="mt-last-view" id="mt-post-date">
 
-                }
-                show();
-                </script>
-                <p class="mt-last-view">Author:
-                </p>
-                <p class="mt-last-view">
-                    Post Date:
-                </p>
-                <p class="mt-last-view">
-                    Last Update:
-                </p>
-                <p class="mt-last-view">
-                    Categorie
-                </p>
+                    </p>
+                    <p class="mt-last-view" id="mt-last-update">
 
-                <h2 class="mt-blog-title">
-                    Title:-
-                </h2>
-                <br>
-                <div id="mt-view-content">
+                    </p>
+                    <p class="mt-last-view" id="mt-post-categorie">
 
+                    </p>
+                    <br>
+                    <h2 class="mt-blog-title" id="mt-blog-title">
+
+                    </h2>
+                    <br>
+                    <div id="mt-view-content">
+
+                    </div>
+                </div>
+                <div id="mt-review-video">
+                    <p class="mt-last-view" id="mt-video-author">
+                    </p>
+                    <p class="mt-last-view" id="mt-video-post-date">
+
+                    </p>
+                    <p class="mt-last-view" id="mt-video-last-update">
+
+                    </p>
+                    <p class="mt-last-view" id="mt-video-post-categorie">
+
+                    </p>
+
+                    <h2 class="mt-blog-title" id="mt-video-blog-title">
+
+                    </h2>
+                    <br>
+                    <div id="mt-view-content">
+                        <video class="mt-view-video" id="mt-preview-video" controls>
+                        </video>
+                        <p>The prices is </p>
+
+                    </div>
                 </div>
 
-
-                <?php
-
-
-if (isset($_GET['pid']) and !empty($_GET['pid'])) {
-    $row = $videoPost->getVideoPost($_GET['pid']);
-    if ($row != null) {
-        ?>
-                <script>
-                function show() {
-                    var display = document.getElementById('mt-display');
-                    display.scrollIntoView();
-                }
-                show();
-                </script>
-                <p class="mt-last-view">Author:
-                    <?php echo " " . $row['username']; ?></p>
-                <p class="mt-last-view">
-                    Post Date: <?php echo " " . $row['postdate']; ?>
-                </p>
-                <p class="mt-last-view">
-                    Last Update: <?php echo " " . $row['lastupdate']; ?>
-                </p>
-                <p class="mt-last-view">
-                    Categorie:- <?php echo " " . $row['categorie']; ?> Video
-                </p>
-
-                <h2 class="mt-blog-title">
-                    Title:- <?php echo " " . $row['title']; ?> Video Tutorial
-                </h2>
-                <br>
-                <div id="mt-view-content">
-                    <video class="mt-view-video" src="<?php echo $row['content']; ?>" controls
-                        poster="<?php echo $row['coverpage']; ?>">
-                    </video>
-                    <p>The prices is </p>
-
-                </div>
-                <?php
-}
-}
-?>
             </div>
         </main>
 

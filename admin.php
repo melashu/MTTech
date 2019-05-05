@@ -24,7 +24,7 @@ require_once "adminsidemenu.php";
 require_once "mt-blogpost.php";
 ?>
         <main class="mt-admin-main">
-            <h1>On development....</h1>
+            <h1>On development....by </h1>
         </main>
     </div>
     <footer class="mt-footer">

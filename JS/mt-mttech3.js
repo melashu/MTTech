@@ -4,8 +4,29 @@ $('document').ready(function () {
      */
 
     $('#mt-for-del').one('change', function (e) {
-        // console.log($('button.mt-edit-btn'));
-        // console.log(document.getElementsByClassName('button.mt-edit-btn'))
+
+        $('button.mt-del-video').click(function () {
+            var conform = confirm("Do you want to delete this video");
+            if (conform) {
+                var id = $(this).parent().parent().find('input').val();
+                var data = [];
+                data.push(id);
+                ajaxToVideoPost(JSON.stringify(data), 'delete');
+            }
+        });
+        /**
+         * For viewpost.php and manipulating  video post
+         */
+        $('button.mt-video-view').click(function () {
+            var id = $(this).parent().parent().find('input').val();
+            // $('#mt-display').fadeIn();
+            // $('#mt-review-video').fadeIn();
+            // $('#mt-review-blog').fadeOut();
+
+            previewVideo(id);
+        });
+
+
         $('button.mt-del-btn').click(function () {
             var conform = confirm("Do you want to delete this blog");
             if (conform) {
@@ -20,14 +41,38 @@ $('document').ready(function () {
             var id = $(this).parent().parent().find('input').val();
             location = "blogpost.php?pid=" + id;
         });
-        $('button.mt-view').click(function () {
+        // console.log($('button.mt-preview-btn'));
+
+
+        $('button.mt-preview-btn').click(function () {
             var id = $(this).parent().parent().find('input').val();
+            $('#mt-display').show(600);
+            // $('#mt-review-video').fadeOut();
+            // $('#mt-review-blog').fadeIn();
+
             var display = document.getElementById('mt-display');
             display.scrollIntoView();
-
+            $.ajax({
+                url: 'mt-blogpost.php',
+                data: { 'row': id, 'data': 'edit' },
+                type: 'POST',
+                dataType: 'text'
+            }).done(function (data) {
+                if (data === 'noEdit') {
+                    alert('not edited');
+                } else {
+                    var row = JSON.parse(data);
+                    $('#mt-author').text('Author: ' + row['username']);
+                    $('#mt-post-date').text('Post Date: ' + row['postdate']);
+                    $('#mt-last-update').text('Last Update: ' + row['lastupdate']);
+                    $('#mt-post-categorie').text('Categorie: ' + row['categorie']);
+                    $('#mt-blog-title').text('Title: ' + row['title']);
+                    $('#mt-view-content').html(row['content']);
+                }
+            });
         });
-
     });
+
 
     var getBlogList = () => {
         var blogCheckBox = document.getElementsByClassName('mt-view-box');
@@ -59,12 +104,14 @@ $('document').ready(function () {
             if (data === 'delete') {
                 alert('You successfuly delete the selected video post ');
                 setTimeout(() => {
-                    location = 'viewpost.php';
+                    showVideoPost();
+                    // location = 'viewpost.php';
                 }, 100)
             } else if (data === 'update') {
                 alert('You successfuly update the selected video post ');
                 setTimeout(() => {
-                    location = 'viewpost.php';
+                    showVideoPost();
+                    // location = 'viewpost.php';
                 }, 100)
             } else {
                 alert('There may be error please try again ');
@@ -98,8 +145,6 @@ $('document').ready(function () {
 
         })
     }
-
-
 
     // location = "blogpost.php";
     // $('#mt-title').val('Introduction to jQuery')
@@ -152,3 +197,39 @@ $('document').ready(function () {
         }
     });
 })
+
+
+/****
+ * for viewpost.php and manipulate video post preview
+ */
+function previewVideo(para) {
+    // $('#mt-display').show(600);
+    var display = document.getElementById('mt-display');
+    display.scrollIntoView();
+    $.ajax({
+        url: 'mt-videopost.php',
+        data: { 'row': para, 'preview': 'view' },
+        type: 'POST',
+        dataType: 'text'
+    }).done(function (data) {
+        if (data === 'no view') {
+            alert('View could not viewed');
+        } else {
+            var row = JSON.parse(data);
+            $('#mt-review-blog').hide();
+            var display = document.getElementById('mt-display');
+            display.scrollIntoView();
+            $('#mt-video-author').text('Author: ' + row['username']);
+            $('#mt-video-post-date').text('Post Date: ' + row['postdate']);
+            $('#mt-video-last-update').text('Last Update: ' + row['lastupdate']);
+            $('#mt-video-post-categorie').text('Categorie: ' + row['categorie'] + " Video Post");
+            $('#mt-video-blog-title').text('Title: ' + row['title']);
+            $('#mt-preview-video').attr('src', row['content']);
+            $('#mt-preview-video').attr('poster', row['coverpage']);
+        }
+    });
+}
+
+/***
+ * for course.php 
+ */

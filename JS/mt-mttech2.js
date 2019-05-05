@@ -123,3 +123,56 @@ if (slideMenu != null) {
         $(this).next().slideToggle(500);
     });
 }
+/**
+ * 
+ * course.php add accordion for the menu
+ */
+
+// $('#accordion').accordion();
+$(function () {
+    $("#accordion").accordion({
+        active: 0,
+        animate: 800,
+        // icons: { "header": "ui-icon-plus", "activeHeader": "ui-icon-minus" }
+
+    });
+    $('#mt-blog-search').tooltip();
+});
+
+$('.mt-page-link').click(function () {
+    var pid = $(this).attr('data-pid');
+    $.ajax({
+        url: 'mt-blogpost.php',
+        data: { 'data': 'edit', 'row': pid },
+        type: 'POST',
+        dataType: 'text'
+    }).done(function (data) {
+        var data = JSON.parse(data);
+        $('.mt-course-main h1').fadeOut();
+        $('.mt-blog-comment').fadeIn();
+        $('.mt-hr').fadeIn();
+        $('.mt-course-title').text(data['title']);
+        $('.mt-course-author').html("Blog Author <strong>" + data['username'] + "</strong>");
+        $('.mt-course-postdate').html("The Blog Posted on <strong>" + data['postdate'] + "</strong>");
+        $('.mt-course-lastupdate').html("Last update on <strong>" + data['lastupdate'] + "</strong>");
+        if (data['coverpage'] !== 'no') {
+            $('.mt-coverimage').fadeIn();
+            $('.mt-coverimage').attr('src', data['coverpage']);
+        } else {
+            $('.mt-coverimage').fadeOut();
+
+        }
+        if (data['poststatus'] === 'closed' || data['poststatus'] === 'draft') {
+            $('.mt-course-content').html("<strong> Sorry the content didn't published yet..</strong>");
+        } else {
+            $('.mt-course-content').html(data['content']);
+
+        }
+
+    });
+})
+
+$('form.mt-blog-comment').on('submit', function (event) {
+    event.preventDefault();
+
+});
